@@ -1,5 +1,5 @@
 import { DEVELOPMENT_PLANS, getRoleById } from "../data";
-import type { DevelopmentPlan } from "../types/development";
+import type { DevelopmentPair, DevelopmentPlan, DevelopmentTriple } from "../types/development";
 import type { Role, Triple } from "../types/role";
 
 function firstName(person = "Team member"): string {
@@ -16,13 +16,13 @@ function defaultQuarterlyGoals(
     products,
   ]);
 
-  if (rows.length) return rows;
+  if (rows.length) return rows as DevelopmentTriple[];
 
   return role.outcomes.slice(0, 5).map(([outcome, success, evidence]) => [
     `Advance ${outcome.toLowerCase()}`,
     success,
     evidence,
-  ]);
+  ]) as DevelopmentTriple[];
 }
 
 function defaultSemiannualOutcomes(
@@ -34,12 +34,12 @@ function defaultSemiannualOutcomes(
     `${definition} By the semiannual review point, this should show up through more independent judgment, cleaner follow-through, and observable behaviors such as: ${behavior}`,
   ]);
 
-  if (rows.length) return rows;
+  if (rows.length) return rows as DevelopmentPair[];
 
   return role.outcomes.slice(0, 5).map(([outcome, success]) => [
     `Stronger ownership of ${outcome.toLowerCase()}`,
     `${success} By the semiannual review point, evidence should show more independent ownership, stronger quality, and more consistent follow-through.`,
-  ]);
+  ]) as DevelopmentPair[];
 }
 
 export function buildDefaultDevelopmentPlan(role: Role): DevelopmentPlan {

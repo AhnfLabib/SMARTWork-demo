@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
-import { roleMatchesQuery, filterRoles } from "./search";
-import { ROLES } from "../data";
+import { filterRoles, orgNodeMatchesQuery, countOrgMatches } from "./search";
+import { ROLES, ORG_TREE } from "../data";
+import { getRoleById } from "../data";
 
 describe("filterRoles", () => {
   it("finds Ahnaf by name substring", () => {
@@ -11,5 +12,14 @@ describe("filterRoles", () => {
   it("returns empty for nonsense query", () => {
     const result = filterRoles(ROLES, { query: "zzzz-no-match", function: "All", family: "All", reportsTo: "All" });
     expect(result).toHaveLength(0);
+  });
+});
+
+describe("org search", () => {
+  it("finds Ahnaf in the org tree", () => {
+    const role = getRoleById("ahnaf-labib");
+    const ahnaf = ORG_TREE.children![1].children![1].children![0];
+    expect(orgNodeMatchesQuery(ahnaf, "ahnaf", role)).toBe(true);
+    expect(countOrgMatches(ORG_TREE, "ahnaf", getRoleById)).toBe(1);
   });
 });

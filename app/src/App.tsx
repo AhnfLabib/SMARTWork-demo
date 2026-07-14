@@ -1,17 +1,14 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 import AppShell from "./components/AppShell";
 import NotFound from "./components/NotFound";
-
-function HomePlaceholder() {
-  return <p>Org map coming next.</p>;
-}
+import HomePage from "./pages/HomePage";
 
 export default function App() {
   return (
     <HashRouter>
       <AppShell>
         <Routes>
-          <Route path="/" element={<HomePlaceholder />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/person/:id" element={<p>Profile</p>} />
           <Route path="/person/:id/development" element={<p>Development</p>} />
           <Route path="/person/:id/review" element={<p>Review</p>} />
