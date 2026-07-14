@@ -1,8 +1,26 @@
+import { HashRouter, Routes, Route } from "react-router-dom";
+import AppShell from "./components/AppShell";
+import NotFound from "./components/NotFound";
+
+function HomePlaceholder() {
+  return <p>Org map coming next.</p>;
+}
+
 export default function App() {
   return (
-    <main>
-      <h1>Bridge360</h1>
-      <p>Bridge Builder Strategies</p>
-    </main>
+    <HashRouter>
+      <AppShell>
+        <Routes>
+          <Route path="/" element={<HomePlaceholder />} />
+          <Route path="/person/:id" element={<p>Profile</p>} />
+          <Route path="/person/:id/development" element={<p>Development</p>} />
+          <Route path="/person/:id/review" element={<p>Review</p>} />
+          <Route path="/person/:id/review/manager" element={<p>Manager</p>} />
+          <Route path="/person/:id/review/employee" element={<p>Employee</p>} />
+          <Route path="/person/:id/review/combine" element={<p>Combine</p>} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </AppShell>
+    </HashRouter>
   );
 }
