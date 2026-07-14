@@ -2,6 +2,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import AppShell from "./components/AppShell";
 import NotFound from "./components/NotFound";
 import HomePage from "./pages/HomePage";
+import ProfilePage from "./pages/ProfilePage";
 
 export default function App() {
   return (
@@ -9,7 +10,7 @@ export default function App() {
       <AppShell>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/person/:id" element={<p>Profile</p>} />
+          <Route path="/person/:id" element={<ProfilePage />} />
           <Route path="/person/:id/development" element={<p>Development</p>} />
           <Route path="/person/:id/review" element={<p>Review</p>} />
           <Route path="/person/:id/review/manager" element={<p>Manager</p>} />

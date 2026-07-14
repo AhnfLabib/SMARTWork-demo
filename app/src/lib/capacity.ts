@@ -32,3 +32,18 @@ export function groupedAllocations(capacity: CapacityProfile): GroupedAllocation
     return groups;
   }, {});
 }
+
+export function formatDate(isoDate: string): string {
+  const date = new Date(`${isoDate}T12:00:00`);
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+export function capacityCategoryClass(category: string): string {
+  return (category || "Other").toLowerCase().replace(/\s+/g, "-");
+}
+
+export const CAPACITY_CATEGORY_ORDER = ["Project", "Product", "Internal"] as const;
