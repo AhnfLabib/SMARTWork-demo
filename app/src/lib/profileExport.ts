@@ -2,6 +2,7 @@ import type { CapacityProfile } from "../types/capacity";
 import type { Role } from "../types/role";
 import { competencyExpectationExportLines } from "./competency";
 import { formatDate } from "./capacity";
+import { downloadTextFile } from "./download";
 
 export function buildProfileSummaryText(
   role: Role,
@@ -63,6 +64,13 @@ export function buildProfileSummaryText(
   ].filter((line) => line !== "");
 
   return lines.join("\n");
+}
+
+export function exportSummary(
+  role: Role,
+  capacity: CapacityProfile | null,
+): void {
+  downloadTextFile(profileSummaryFilename(role), buildProfileSummaryText(role, capacity));
 }
 
 export function profileSummaryFilename(role: Role): string {

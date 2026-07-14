@@ -1,7 +1,10 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import ProfilePage from "./ProfilePage";
+import * as printModule from "../lib/print";
+import * as profileExportModule from "../lib/profileExport";
 
 function renderProfile(id: string) {
   return render(
@@ -68,5 +71,35 @@ describe("ProfilePage", () => {
 
     expect(screen.getByRole("heading", { name: "Page not found" })).toBeInTheDocument();
     expect(screen.queryByText("Ahnaf Labib")).not.toBeInTheDocument();
+  });
+
+  describe("export and print actions", () => {
+    afterEach(() => {
+      vi.restoreAllMocks();
+      delete document.body.dataset.printMode;
+    });
+
+    it("exports profile summary on Export summary click", async () => {
+      const user = userEvent.setup();
+      const exportSpy = vi.spyOn(profileExportModule, "exportSummary").mockImplementation(() => {});
+
+      renderProfile("ahnaf-labib");
+      await user.click(screen.getByRole("button", { name: "Export summary" }));
+
+      expect(exportSpy).toHaveBeenCalledOnce();
+      expect(exportSpy.mock.calls[0]?.[0]?.id).toBe("ahnaf-labib");
+    });
+
+    it("prints summary and full profile from print menu", async () => {
+      const user = userEvent.setup();
+      const printSpy = vi.spyOn(printModule, "printProfile").mockImplementation(() => {});
+
+      renderProfile("ahnaf-labib");
+      await user.click(screen.getByRole("button", { name: "Print summary" }));
+      await user.click(screen.getByRole("button", { name: "Print full profile" }));
+
+      expect(printSpy).toHaveBeenCalledWith("profile-summary");
+      expect(printSpy).toHaveBeenCalledWith("profile-full");
+    });
   });
 });

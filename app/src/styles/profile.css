@@ -440,6 +440,14 @@
   padding: 20px;
 }
 
+.profile-tab-panel-slot {
+  display: none;
+}
+
+.profile-tab-panel-slot.is-active {
+  display: block;
+}
+
 .profile-tab-panel {
   display: grid;
   gap: 16px;
@@ -1118,24 +1126,3 @@
   }
 }
 
-@media print {
-  .app-header,
-  .person-context-bar,
-  .hero-actions,
-  .profile-tab-list {
-    display: none !important;
-  }
-
-  .profile-card {
-    border: none;
-    box-shadow: none;
-  }
-
-  body.profile-summary-printing .profile-tab-content {
-    display: none !important;
-  }
-
-  body.profile-full-printing .profile-tab-list {
-    display: none !important;
-  }
-}

@@ -378,14 +378,40 @@ export default function ProfileTabs({ role, capacity }: ProfileTabsProps) {
 
       <div
         className="profile-tab-content"
-        role="tabpanel"
-        id={`panel-${activeTab}`}
-        aria-labelledby={`tab-${activeTab}`}
+        role="presentation"
       >
-        {activeTab === "overview" ? <OverviewTab role={role} capacity={capacity} /> : null}
-        {activeTab === "outcomes" ? <OutcomesTab role={role} /> : null}
-        {activeTab === "competencies" ? <CompetenciesTab role={role} /> : null}
-        {activeTab === "reference" ? <ReferenceTab role={role} /> : null}
+        <div
+          role="tabpanel"
+          id="panel-overview"
+          aria-labelledby="tab-overview"
+          className={`profile-tab-panel-slot${activeTab === "overview" ? " is-active" : ""}`}
+        >
+          <OverviewTab role={role} capacity={capacity} />
+        </div>
+        <div
+          role="tabpanel"
+          id="panel-outcomes"
+          aria-labelledby="tab-outcomes"
+          className={`profile-tab-panel-slot${activeTab === "outcomes" ? " is-active" : ""}`}
+        >
+          <OutcomesTab role={role} />
+        </div>
+        <div
+          role="tabpanel"
+          id="panel-competencies"
+          aria-labelledby="tab-competencies"
+          className={`profile-tab-panel-slot${activeTab === "competencies" ? " is-active" : ""}`}
+        >
+          <CompetenciesTab role={role} />
+        </div>
+        <div
+          role="tabpanel"
+          id="panel-reference"
+          aria-labelledby="tab-reference"
+          className={`profile-tab-panel-slot${activeTab === "reference" ? " is-active" : ""}`}
+        >
+          <ReferenceTab role={role} />
+        </div>
       </div>
     </div>
   );

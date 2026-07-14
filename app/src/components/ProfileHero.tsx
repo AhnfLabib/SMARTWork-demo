@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import type { CapacityProfile } from "../types/capacity";
 import type { Role } from "../types/role";
-import { downloadTextFile } from "../lib/download";
-import { buildProfileSummaryText, profileSummaryFilename } from "../lib/profileExport";
+import { exportSummary } from "../lib/profileExport";
+import { printProfile } from "../lib/print";
 import CapacityStrip from "./CapacityStrip";
 
 type ProfileHeroProps = {
@@ -14,25 +14,11 @@ export default function ProfileHero({ role, capacity }: ProfileHeroProps) {
   const topOutcomes = role.outcomes.slice(0, 5);
 
   function handleExportSummary() {
-    downloadTextFile(
-      profileSummaryFilename(role),
-      buildProfileSummaryText(role, capacity),
-    );
+    exportSummary(role, capacity);
   }
 
-  function handlePrintStub(mode: "summary" | "full") {
-    document.body.classList.remove("profile-summary-printing", "profile-full-printing");
-    document.body.classList.add(
-      mode === "summary" ? "profile-summary-printing" : "profile-full-printing",
-    );
-    window.print();
-    window.addEventListener(
-      "afterprint",
-      () => {
-        document.body.classList.remove("profile-summary-printing", "profile-full-printing");
-      },
-      { once: true },
-    );
+  function handlePrint(mode: "summary" | "full") {
+    printProfile(mode === "summary" ? "profile-summary" : "profile-full");
   }
 
   return (
@@ -92,14 +78,14 @@ export default function ProfileHero({ role, capacity }: ProfileHeroProps) {
             <button
               className="action-button secondary"
               type="button"
-              onClick={() => handlePrintStub("summary")}
+              onClick={() => handlePrint("summary")}
             >
               Print summary
             </button>
             <button
               className="action-button secondary"
               type="button"
-              onClick={() => handlePrintStub("full")}
+              onClick={() => handlePrint("full")}
             >
               Print full profile
             </button>
