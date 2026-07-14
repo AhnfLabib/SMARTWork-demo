@@ -1,0 +1,10 @@
+.worktrees/
+node_modules/
+dist/
+*.log
+.DS_Store
+.superpowers/
+app/node_modules/
+app/dist/
+app/test-results/
+app/playwright-report/
