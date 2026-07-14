@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import DirectoryPanel from "../components/DirectoryPanel";
 import OrgChart from "../components/OrgChart";
 import OrgSearch from "../components/OrgSearch";
 import { ORG_TREE, getRoleById } from "../data";
@@ -22,6 +23,7 @@ export default function HomePage() {
         onQueryChange={setQuery}
       />
       <OrgChart tree={ORG_TREE} query={query} />
+      <DirectoryPanel query={query} onQueryChange={setQuery} />
     </div>
   );
 }
