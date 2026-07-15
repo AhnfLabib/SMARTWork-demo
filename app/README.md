@@ -1,6 +1,6 @@
-# Bridge360
+# SMARTWork
 
-Bridge360 is Bridge Builder Strategies’ internal app for role clarity, capacity assignment, development plans, and private 360 reviews.
+SMARTWork is Bridge Builder Strategies’ internal app for role clarity, capacity assignment, development plans, and private 360 reviews.
 
 ## Requirements
 
@@ -42,11 +42,11 @@ Routes use **HashRouter** (`/#/person/...`) so deep links work without server re
 
 ## Product notes
 
-- **Brand:** BBS logos + palette; product name **Bridge360**
+- **Brand:** BBS logos + palette; product name **SMARTWork**
 - **Print:** Use browser Print / Save as PDF (profile summary, full profile, development, combined 360)
 - **360 privacy:** Manager and employee responses export as local JSON files (`schema: bbs-role-tool-response-v1`). Combine imports those files in-browser — nothing is uploaded to a server
 - **Scope:** Current-state documentation only (no compensation / gap scoring)
 
-## Later
+## Deploy (Vercel)
 
-Vercel deployment is intentionally out of scope for this build and can be added later.
+Production is configured with **Root Directory** `app`, **Build Command** `npm run build`, and **Output Directory** `dist`. HashRouter deep links work without server rewrite rules.

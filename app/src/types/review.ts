@@ -11,7 +11,7 @@ export interface ResponseField {
 export interface PrivateResponsePayload {
   schema: "bbs-role-tool-response-v1";
   schemaVersion: 1;
-  product: "bridge360";
+  product: "smartwork";
   kind: ReviewKind;
   audience: ReviewAudience;
   personId: string;

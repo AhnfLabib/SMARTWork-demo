@@ -20,7 +20,7 @@ export function buildProfileSummaryText(
     : [];
 
   const lines = [
-    "Bridge360 — Bridge Builder Strategies",
+    "SMARTWork — Bridge Builder Strategies",
     "",
     `Person: ${role.person}`,
     `Current source title: ${role.sourceTitle}`,

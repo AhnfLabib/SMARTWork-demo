@@ -1,18 +1,18 @@
-# Bridge360 — React Redesign Design Spec
+# SMARTWork — React Redesign Design Spec
 
 **Date:** 2026-07-14  
 **Status:** Approved for implementation planning  
-**Product name:** Bridge360  
+**Product name:** SMARTWork  
 **Organization:** Bridge Builder Strategies (BBS)
 
 ## 1. Problem & goals
 
 The current app is a working static Role Clarity Library (`outputs/`: plain HTML/CSS/JS) with org map, role profiles, capacity, development plans, 360 private→combine workflow, and print/export. It is dense, monolithic (~3k-line `app.js`), and hard to navigate for managers who primarily need development planning and 360 reviews.
 
-This rebuild ships that product as **Bridge360**: BBS’s internal role-clarity, capacity, development, and 360 review application.
+This rebuild ships that product as **SMARTWork**: BBS’s internal role-clarity, capacity, development, and 360 review application.
 
 **Goals**
-- Rebuild as **Bridge360**, a React + Vite SPA with **full feature parity**.
+- Rebuild as **SMARTWork**, a React + Vite SPA with **full feature parity**.
 - Optimize UX for **managers running development plans and 360 reviews**.
 - Progressive disclosure: important content upfront; depth via tabs/routes.
 - Fuller visual redesign while **keeping official BBS logos and brand palette**.
@@ -28,7 +28,7 @@ This rebuild ships that product as **Bridge360**: BBS’s internal role-clarity,
 
 | Topic | Decision |
 |--------|----------|
-| Product name | **Bridge360** |
+| Product name | **SMARTWork** |
 | Parent brand | Bridge Builder Strategies (BBS logos + palette) |
 | Primary user | Managers (development + 360) |
 | Approach | Routed React SPA (Approach 1) |
@@ -43,8 +43,8 @@ This rebuild ships that product as **Bridge360**: BBS’s internal role-clarity,
 ### Repo layout
 
 ```
-app/                          # Bridge360 — Vite + React + TypeScript source
-  package.json                # name: "bridge360"
+app/                          # SMARTWork — Vite + React + TypeScript source
+  package.json                # name: "smartwork"
   src/
     data/                     # roles, org, capacity, development
     components/
@@ -54,14 +54,14 @@ app/                          # Bridge360 — Vite + React + TypeScript source
   public/assets/              # brand + source profiles/documents
 dist/                         # Static production build (serve locally)
 outputs/                      # Legacy Role Clarity Library — migration source until cutover
-work/                         # Playwright validators (retargeted to Bridge360)
+work/                         # Playwright validators (retargeted to SMARTWork)
 docs/superpowers/specs/       # This design doc
 ```
 
 ### Naming in the UI
 
-- App title / document title: **Bridge360**
-- Header product name: **Bridge360**
+- App title / document title: **SMARTWork**
+- Header product name: **SMARTWork**
 - Supporting eyebrow or lockup context: Bridge Builder Strategies (via logo + short org label where useful)
 - Subtitle framing may still say “Role clarity · capacity · development · 360” so the purpose stays clear
 - Do not use “Role Clarity Library” as the primary product name going forward
@@ -97,7 +97,7 @@ Person IDs remain stable (`ahnaf-labib`, `jack-dougher`, etc.).
 
 ### Home
 
-- Brand header: BBS logo + **Bridge360** product name + short “current-state documentation only” note.
+- Brand header: BBS logo + **SMARTWork** product name + short “current-state documentation only” note.
 - Dominant org map; search prominent.
 - Filters/directory demoted (collapsed panel or drawer) so finding a person is primary.
 
@@ -152,13 +152,13 @@ From `outputs/data.js` and embedded structures in `outputs/app.js`:
 
 ### Compatibility
 
-Private 360/development response JSON remains compatible with the current export mental model. Include `schemaVersion: 1` and `product: "bridge360"` on new exports; combine accepts v1 (and legacy shape without version if fields match). Do not invent a server sync protocol.
+Private 360/development response JSON remains compatible with the current export mental model. Include `schemaVersion: 1` and `product: "smartwork"` on new exports; combine accepts v1 (and legacy shape without version if fields match). Do not invent a server sync protocol.
 
 ## 6. Components & workflows
 
 ### Shared
 
-- `AppShell` — header with BBS logo + **Bridge360** name, home affordance, brand accents
+- `AppShell` — header with BBS logo + **SMARTWork** name, home affordance, brand accents
 - `PersonContextBar` — person routes navigation + contextual print/export
 
 ### Home
@@ -184,7 +184,7 @@ Private 360/development response JSON remains compatible with the current export
 
 - Print CSS per mode; hide chrome; expand required content
 - Text/JSON download helpers for summaries and private responses
-- Printed headers may show **Bridge360** + BBS logo where space allows
+- Printed headers may show **SMARTWork** + BBS logo where space allows
 
 ## 7. Visual redesign
 
@@ -203,7 +203,7 @@ Private 360/development response JSON remains compatible with the current export
 - Tabs and spacing for scan-then-dive
 - Accents from BBS palette; avoid purple-gradient / cream-serif / broadsheet clichés
 - Responsive: stack home on small screens; sticky person context on person routes
-- Product wordmark treatment for **Bridge360** that sits with—not replaces—the BBS logo
+- Product wordmark treatment for **SMARTWork** that sits with—not replaces—the BBS logo
 
 ### Print constraint
 
@@ -235,24 +235,24 @@ Redesign must preserve printable: profile summary, full profile, development pla
 
 ### Acceptance criteria
 
-1. `npm run build` produces a static Bridge360 folder servable locally.
+1. `npm run build` produces a static SMARTWork folder servable locally.
 2. Full parity: org, all profiles, capacity, development, 360 private→combine, print/export.
 3. Profiles are summary-first with four tabs.
 4. Managers can complete Development + 360 paths with no backend.
-5. UI shows **Bridge360** as product name with BBS logos + palette; redesign is not a skin of the old layout.
-6. Playwright-style checks adapted and passing against Bridge360.
+5. UI shows **SMARTWork** as product name with BBS logos + palette; redesign is not a skin of the old layout.
+6. Playwright-style checks adapted and passing against SMARTWork.
 
 ## 10. Implementation sequencing (for the plan)
 
 Suggested build order (detailed steps belong in the implementation plan):
 
-1. Scaffold Vite React TS Bridge360 app (`name: "bridge360"`) + HashRouter + design tokens/shell
+1. Scaffold Vite React TS SMARTWork app (`name: "smartwork"`) + HashRouter + design tokens/shell
 2. Migrate data modules + assets; unit-test helpers
 3. Home: org + search + directory
 4. Profile: hero + tabs + capacity + export/print modes
 5. Development plan pages + print
 6. 360 launch, private forms, combine, print
-7. Visual polish pass + responsive (Bridge360 wordmark + BBS lockup)
+7. Visual polish pass + responsive (SMARTWork wordmark + BBS lockup)
 8. Retarget Playwright validators; acceptance checklist
 
 ## 11. Out of scope reminders

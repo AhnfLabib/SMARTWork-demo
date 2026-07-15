@@ -19,7 +19,7 @@ export default function ReviewLaunchPage() {
       <div className="profile-card review-card">
         <header className="profile-hero review-hero">
           <div className="profile-hero-main">
-            <Link to="/" className="profile-title-block" aria-label="Return to Bridge360 home">
+            <Link to="/" className="profile-title-block" aria-label="Return to SMARTWork home">
               <img
                 className="profile-logo"
                 src="/assets/brand/bbs-logo-white-lockup.png"

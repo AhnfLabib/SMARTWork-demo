@@ -9,7 +9,7 @@ export default function AppShell({ children }: AppShellProps) {
   return (
     <>
       <header className="app-header">
-        <Link to="/" className="brand-lockup" aria-label="Return to Bridge360 home">
+        <Link to="/" className="brand-lockup" aria-label="Return to SMARTWork home">
           <img
             className="brand-logo"
             src="/assets/brand/bbs-logo-color-lockup.png"
@@ -17,7 +17,7 @@ export default function AppShell({ children }: AppShellProps) {
           />
           <div className="brand-copy">
             <p className="eyebrow">Bridge Builder Strategies</p>
-            <h1 className="product-wordmark">Bridge360</h1>
+            <h1 className="product-wordmark">SMARTWork</h1>
             <p className="product-tagline">Internal role clarity</p>
           </div>
         </Link>

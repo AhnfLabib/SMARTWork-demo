@@ -135,7 +135,7 @@ export default function DevelopmentPage() {
       <div className="profile-card development-card">
         <header className="profile-hero development-hero">
           <div className="profile-hero-main">
-            <Link to="/" className="profile-title-block" aria-label="Return to Bridge360 home">
+            <Link to="/" className="profile-title-block" aria-label="Return to SMARTWork home">
               <img
                 className="profile-logo"
                 src="/assets/brand/bbs-logo-white-lockup.png"

@@ -163,7 +163,7 @@ export function buildPrivateResponsePayload(
   return {
     schema: "bbs-role-tool-response-v1",
     schemaVersion: 1,
-    product: "bridge360",
+    product: "smartwork",
     kind,
     audience,
     personId: role.id,

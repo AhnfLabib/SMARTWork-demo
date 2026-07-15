@@ -10,7 +10,7 @@ describe("profileExport", () => {
     const capacity = getCapacityProfile(role.id);
     const text = buildProfileSummaryText(role, capacity);
 
-    expect(text).toContain("Bridge360 — Bridge Builder Strategies");
+    expect(text).toContain("SMARTWork — Bridge Builder Strategies");
     expect(text).toContain(`Person: ${role.person}`);
     expect(text).toContain("Role purpose:");
     expect(text).toContain(role.rolePurpose);

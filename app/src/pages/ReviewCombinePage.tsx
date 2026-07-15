@@ -85,7 +85,7 @@ export default function ReviewCombinePage() {
       <div className="profile-card review-card">
         <header className="profile-hero review-hero">
           <div className="profile-hero-main">
-            <Link to="/" className="profile-title-block" aria-label="Return to Bridge360 home">
+            <Link to="/" className="profile-title-block" aria-label="Return to SMARTWork home">
               <img
                 className="profile-logo"
                 src="/assets/brand/bbs-logo-white-lockup.png"
@@ -114,7 +114,7 @@ export default function ReviewCombinePage() {
         <section className="private-workflow-intro">
           <span className="card-label">Import private response files</span>
           <p>
-            Import each private JSON response file. Bridge360 validates that both files match
+            Import each private JSON response file. SMARTWork validates that both files match
             this person and workflow, then previews responses side by side for discussion.
           </p>
         </section>

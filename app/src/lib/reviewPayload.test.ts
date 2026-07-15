@@ -36,7 +36,7 @@ function basePayload(
   return {
     schema: "bbs-role-tool-response-v1",
     schemaVersion: 1,
-    product: "bridge360",
+    product: "smartwork",
     kind: "360-review",
     audience: "manager",
     personId: "ahnaf-labib",
@@ -206,7 +206,7 @@ describe("buildPrivateResponsePayload", () => {
 
     expect(payload.schema).toBe("bbs-role-tool-response-v1");
     expect(payload.schemaVersion).toBe(1);
-    expect(payload.product).toBe("bridge360");
+    expect(payload.product).toBe("smartwork");
     expect(payload.personId).toBe("ahnaf-labib");
     expect(payload.selections).toHaveLength(1);
     expect(payload.fields).toHaveLength(1);
