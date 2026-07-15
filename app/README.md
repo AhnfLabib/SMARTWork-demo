@@ -1,32 +1,52 @@
-# React + TypeScript + Vite
+# Bridge360
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Bridge360 is Bridge Builder Strategies’ internal app for role clarity, capacity assignment, development plans, and private 360 reviews.
 
-Currently, two official plugins are available:
+## Requirements
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js 20+ recommended
+- Local static serving of the production build (do **not** open `dist/index.html` via `file://`)
 
-## React Compiler
+## Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+cd app
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Develop
+
+```bash
+npm run dev
+```
+
+## Build & preview (supported local workflow)
+
+```bash
+npm run build
+npm run preview
+# or: npx serve dist
+```
+
+Routes use **HashRouter** (`/#/person/...`) so deep links work without server rewrite rules.
+
+## Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `npm run dev` | Vite development server |
+| `npm run build` | Typecheck + production build to `dist/` |
+| `npm run preview` | Serve `dist/` locally |
+| `npm test` | Vitest unit/component tests |
+| `npx playwright test` | End-to-end smokes (build/`preview` via Playwright webServer) |
+
+## Product notes
+
+- **Brand:** BBS logos + palette; product name **Bridge360**
+- **Print:** Use browser Print / Save as PDF (profile summary, full profile, development, combined 360)
+- **360 privacy:** Manager and employee responses export as local JSON files (`schema: bbs-role-tool-response-v1`). Combine imports those files in-browser — nothing is uploaded to a server
+- **Scope:** Current-state documentation only (no compensation / gap scoring)
+
+## Later
+
+Vercel deployment is intentionally out of scope for this build and can be added later.
