@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Role Clarity Library | Bridge Builder Strategies</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div id="homeBrand" class="brand-lockup home-brand" role="button" tabindex="0" aria-label="Return to Role Clarity Library home">
+        <img class="brand-logo" src="assets/brand/bbs-logo-color-lockup.png" alt="Bridge Builder Strategies">
+        <div>
+          <p class="eyebrow">Bridge Builder Strategies</p>
+          <h1>Role Clarity Library</h1>
+        </div>
+      </div>
+      <div class="header-note">
+        <strong>Current-state documentation</strong>
+        <span>No gap analysis, scoring, compensation guidance, or task reallocation.</span>
+      </div>
+      <div class="brand-rail" aria-hidden="true">
+        <span class="rail-navy"></span>
+        <span class="rail-green"></span>
+        <span class="rail-blue"></span>
+        <span class="rail-orange"></span>
+        <span class="rail-red"></span>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <section class="org-section" aria-label="Organization chart">
+        <div class="org-heading">
+          <div>
+            <p class="eyebrow dark">Organization View</p>
+            <h2>BBS Current Role Map</h2>
+          </div>
+          <div class="front-search" role="search">
+            <label for="orgSearchInput">Search the role map</label>
+            <div class="front-search-row">
+              <input id="orgSearchInput" type="search" placeholder="Search people, titles, skills, tools, responsibilities...">
+              <button id="orgSearchClear" class="ghost-button compact-button" type="button">Clear</button>
+            </div>
+            <span id="orgSearchMeta" class="front-search-meta">Showing all people in the current organization map.</span>
+          </div>
+        </div>
+        <div class="org-stage-wrap">
+          <div id="orgChart" class="org-stage" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <aside class="directory-panel supporting-directory" aria-label="Role directory">
+        <section class="controls" aria-label="Search and filters">
+          <label class="search-box">
+            <span>Search roles</span>
+            <input id="searchInput" type="search" placeholder="Person, title, skill, tool, work product...">
+          </label>
+          <div class="filter-grid">
+            <label>
+              <span>Function</span>
+              <select id="functionFilter"></select>
+            </label>
+            <label>
+              <span>Role family</span>
+              <select id="familyFilter"></select>
+            </label>
+            <label>
+              <span>Reports to</span>
+              <select id="reportsFilter"></select>
+            </label>
+          </div>
+          <button id="clearFilters" class="ghost-button" type="button">Clear filters</button>
+        </section>
+
+        <div class="directory-meta">
+          <h2>Role Directory</h2>
+          <span id="resultCount"></span>
+        </div>
+        <section id="roleList" class="role-list" aria-live="polite"></section>
+      </aside>
+
+      <section class="detail-panel" aria-label="Selected role profile">
+        <div id="detailRoot"></div>
+      </section>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
