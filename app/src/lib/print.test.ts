@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { printProfile } from "./print";
+import { printCombined, printDevelopment, printProfile } from "./print";
 
 describe("printProfile", () => {
   afterEach(() => {
@@ -14,6 +14,30 @@ describe("printProfile", () => {
     });
 
     printProfile("profile-summary");
+
+    expect(printSpy).toHaveBeenCalledOnce();
+    expect(document.body.dataset.printMode).toBeUndefined();
+  });
+
+  it("sets development print mode and clears on afterprint", () => {
+    const printSpy = vi.spyOn(window, "print").mockImplementation(() => {
+      expect(document.body.dataset.printMode).toBe("development");
+      window.dispatchEvent(new Event("afterprint"));
+    });
+
+    printDevelopment();
+
+    expect(printSpy).toHaveBeenCalledOnce();
+    expect(document.body.dataset.printMode).toBeUndefined();
+  });
+
+  it("sets combined print mode and clears on afterprint", () => {
+    const printSpy = vi.spyOn(window, "print").mockImplementation(() => {
+      expect(document.body.dataset.printMode).toBe("combined");
+      window.dispatchEvent(new Event("afterprint"));
+    });
+
+    printCombined();
 
     expect(printSpy).toHaveBeenCalledOnce();
     expect(document.body.dataset.printMode).toBeUndefined();
