@@ -15,9 +15,10 @@ export default function AppShell({ children }: AppShellProps) {
             src="/assets/brand/bbs-logo-color-lockup.png"
             alt="Bridge Builder Strategies"
           />
-          <div>
+          <div className="brand-copy">
             <p className="eyebrow">Bridge Builder Strategies</p>
-            <h1>Bridge360</h1>
+            <h1 className="product-wordmark">Bridge360</h1>
+            <p className="product-tagline">Role clarity · capacity · development · 360</p>
           </div>
         </Link>
         <p className="header-note">

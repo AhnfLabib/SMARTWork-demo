@@ -80,12 +80,19 @@ select {
   text-transform: uppercase;
 }
 
-.app-header h1 {
+.app-header h1,
+.product-wordmark {
   font-family: var(--font-display);
   font-size: clamp(27px, 4vw, 42px);
   font-weight: 600;
   line-height: 1;
   margin: 0;
+}
+
+.product-tagline {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 6px 0 0;
 }
 
 .header-note {
