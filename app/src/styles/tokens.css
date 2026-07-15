@@ -1,0 +1,16 @@
+:root {
+  --navy: #28334a;
+  --green: #046a38;
+  --blue: #1a4e8a;
+  --orange: #f68d2e;
+  --red: #a72b2a;
+  --ink: #172033;
+  --muted: #647086;
+  --line: #d9e0ea;
+  --soft: #f4f7fa;
+  --green-soft: #eaf5ef;
+  --blue-soft: #eaf1f8;
+  --panel: #ffffff;
+  --font-display: "Source Serif 4", "Georgia", serif;
+  --font-body: "Source Sans 3", "Segoe UI", sans-serif;
+}

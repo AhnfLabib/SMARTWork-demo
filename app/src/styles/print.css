@@ -1,0 +1,87 @@
+@media print {
+  @page {
+    margin: 0.45in;
+    size: letter;
+  }
+
+  html,
+  body {
+    background: #fff;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .app-header,
+  .person-context-bar,
+  .hero-actions,
+  .profile-tab-list,
+  .profile-brand-rail,
+  .action-menu {
+    display: none !important;
+  }
+
+  .app-shell {
+    display: block;
+    margin: 0;
+    max-width: none;
+    padding: 0;
+  }
+
+  .profile-card {
+    border: none;
+    box-shadow: none;
+  }
+
+  body[data-print-mode="profile-summary"] .profile-tab-content {
+    display: none !important;
+  }
+
+  body[data-print-mode="profile-full"] .profile-tab-panel-slot {
+    display: block !important;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  body[data-print-mode="profile-full"] .profile-tab-panel-slot + .profile-tab-panel-slot {
+    break-before: page;
+    page-break-before: always;
+    padding-top: 12px;
+  }
+
+  body[data-print-mode="development"] .development-controls {
+    display: none !important;
+  }
+
+  body[data-print-mode="development"] .development-pill-strip {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  body[data-print-mode="development"] .development-intro {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  body[data-print-mode="development"] .profile-section {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  body[data-print-mode="development"] .startup-week-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-print-mode="development"] .review-field textarea {
+    border: 1px solid #cfd8e4;
+    min-height: 48px;
+  }
+
+  body[data-print-mode="combined"] .review-combine-controls,
+  body[data-print-mode="combined"] .combine-import-grid {
+    display: none !important;
+  }
+
+  body[data-print-mode="combined"] .combined-report {
+    break-inside: avoid-page;
+  }
+}

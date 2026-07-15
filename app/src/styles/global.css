@@ -1,0 +1,198 @@
+@import "./tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: #eef2f6;
+  color: var(--ink);
+  font-family: var(--font-body);
+  letter-spacing: 0;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  align-items: center;
+  background: var(--panel);
+  border-bottom: 1px solid #dfe6ef;
+  box-shadow: 0 8px 26px rgba(23, 32, 51, 0.08);
+  color: var(--navy);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  padding: 18px 28px 22px;
+  position: relative;
+}
+
+.brand-lockup {
+  align-items: center;
+  color: inherit;
+  display: flex;
+  gap: 18px;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.brand-lockup:hover {
+  background: #f4f8fb;
+  border-radius: 8px;
+}
+
+.brand-lockup:focus-visible {
+  box-shadow: 0 0 0 3px rgba(26, 78, 138, 0.18);
+  outline: none;
+}
+
+.brand-logo {
+  display: block;
+  height: auto;
+  max-height: 58px;
+  object-fit: contain;
+  width: clamp(160px, 20vw, 250px);
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin: 0 0 4px;
+  text-transform: uppercase;
+}
+
+.app-header h1,
+.product-wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(27px, 4vw, 42px);
+  font-weight: 600;
+  line-height: 1;
+  margin: 0;
+}
+
+.product-tagline {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 6px 0 0;
+}
+
+.header-note {
+  background: #f7f9fc;
+  border: 1px solid #dce4ee;
+  border-left: 5px solid var(--orange);
+  border-radius: 8px;
+  color: #4c596e;
+  font-size: 14px;
+  line-height: 1.45;
+  max-width: 440px;
+  padding: 12px 14px;
+}
+
+.brand-rail {
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  height: 5px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.brand-rail span {
+  display: block;
+}
+
+.rail-navy {
+  background: var(--navy);
+}
+
+.rail-green {
+  background: var(--green);
+}
+
+.rail-blue {
+  background: var(--blue);
+}
+
+.rail-orange {
+  background: var(--orange);
+}
+
+.rail-red {
+  background: var(--red);
+}
+
+.app-shell {
+  flex: 1;
+  margin: 0 auto;
+  max-width: 1680px;
+  padding: 22px;
+  width: 100%;
+}
+
+.not-found {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  max-width: 560px;
+  padding: 28px;
+}
+
+.not-found h2 {
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: 28px;
+  margin: 0 0 12px;
+}
+
+.not-found p {
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.not-found a {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.not-found a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 16px 18px 20px;
+  }
+
+  .header-note {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+/* Product refinement: let content lead and use brand color as a signal, not decoration. */
+html { background: #f6f7f8; }
+.app-header { background: rgba(255, 255, 255, .97); box-shadow: none; gap: 32px; min-height: 82px; padding: 14px clamp(20px, 4vw, 56px) 17px; }
+.brand-lockup { gap: 14px; }.brand-lockup:hover { background: transparent; }.brand-logo { max-height: 44px; width: clamp(136px, 15vw, 192px); }.eyebrow { color: var(--green); font-size: 10px; letter-spacing: .12em; margin-bottom: 2px; }.app-header h1, .product-wordmark { font-family: var(--font-body); font-size: clamp(25px, 3vw, 33px); font-weight: 750; letter-spacing: -.04em; }.product-tagline { font-size: 12px; margin-top: 3px; }.header-note { background: transparent; border: 0; border-left: 1px solid var(--line); border-radius: 0; font-size: 12px; max-width: 280px; padding: 3px 0 3px 18px; }.brand-rail { height: 3px; }.app-shell { max-width: 1440px; padding: clamp(20px, 3vw, 40px); }
+@media (max-width: 768px) { .header-note { border-left: 0; border-top: 1px solid var(--line); max-width: none; padding: 10px 0 0; } }

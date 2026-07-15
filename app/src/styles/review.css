@@ -1,0 +1,172 @@
+.review-card .review-hero {
+  margin-bottom: 0;
+}
+
+.review-launch,
+.private-workflow-intro,
+.assessment-launch-section,
+.combine-import-grid,
+.combined-report {
+  padding: 20px 24px;
+}
+
+.review-launch {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.8fr);
+  border-bottom: 1px solid var(--line);
+}
+
+.review-meta {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.review-meta div {
+  background: var(--soft);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.review-meta dt {
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.review-meta dd {
+  margin: 4px 0 0;
+  font-weight: 600;
+}
+
+.assessment-launch-card,
+.combine-import-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.assessment-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.review-guidance {
+  display: grid;
+  gap: 4px;
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: var(--green-soft, #eaf5ef);
+  border-radius: 10px;
+}
+
+.private-card-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.outcome-review-card,
+.competency-map-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: #fff;
+}
+
+.rating-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin: 8px 0 12px;
+}
+
+.rating-choices label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.role-expected span {
+  font-weight: 600;
+}
+
+.response-select-field {
+  display: grid;
+  gap: 6px;
+}
+
+.response-select-field select,
+.review-field textarea,
+.review-field input {
+  width: 100%;
+  font: inherit;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.review-field.full {
+  display: grid;
+  gap: 6px;
+}
+
+.combine-import-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.combine-import-card input[type="file"] {
+  margin-top: 10px;
+}
+
+.error-text {
+  color: var(--red);
+  margin: 8px 0 0;
+}
+
+.success-text {
+  color: var(--green);
+  margin: 8px 0 0;
+}
+
+.side-by-side-notes {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 18px 0;
+}
+
+.side-by-side-notes ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.align-priority {
+  background: #fff4f2;
+}
+
+.align-conversation {
+  background: #fff8ef;
+}
+
+.align-aligned {
+  background: #f3faf5;
+}
+
+.combine-waiting {
+  padding: 0 24px 24px;
+}
+
+@media (max-width: 900px) {
+  .review-launch,
+  .combine-import-grid,
+  .side-by-side-notes {
+    grid-template-columns: 1fr;
+  }
+}

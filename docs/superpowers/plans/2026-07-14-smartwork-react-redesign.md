@@ -1,23 +1,23 @@
-# Bridge360 React Redesign Implementation Plan
+# SMARTWork React Redesign Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Rebuild the BBS Role Clarity Library as **Bridge360**, a React + Vite + TypeScript HashRouter SPA with full feature parity, summary-first profile tabs, and manager-optimized development/360 workflows, shippable as a local static `dist/`.
+**Goal:** Rebuild the BBS Role Clarity Library as **SMARTWork**, a React + Vite + TypeScript HashRouter SPA with full feature parity, summary-first profile tabs, and manager-optimized development/360 workflows, shippable as a local static `dist/`.
 
 **Architecture:** Client-only Vite React app under `app/`. Domain data lives in typed modules (`roles`, `org`, `capacity`, `development`). Pure helpers in `src/lib/` own search, capacity math, development plan resolution, and 360 JSON validate/combine. Pages use HashRouter routes; print uses CSS print modes. Legacy `outputs/` remains the migration source until cutover.
 
 **Tech Stack:** React 18, TypeScript, Vite, React Router (HashRouter), Vitest, Playwright, CSS variables (BBS palette), no backend.
 
-**Spec:** `docs/superpowers/specs/2026-07-14-bridge360-react-redesign-design.md`
+**Spec:** `docs/superpowers/specs/2026-07-14-smartwork-react-redesign-design.md`
 
 ---
 
 ## Global Constraints
 
-- Product name in UI/document title: **Bridge360** (not “Role Clarity Library”).
+- Product name in UI/document title: **SMARTWork** (not “Role Clarity Library”).
 - Keep official BBS logos and palette: `#28334a`, `#046a38`, `#1a4e8a`, `#f68d2e`, `#a72b2a`.
 - Person IDs stay stable (`ahnaf-labib`, `jack-dougher`, …).
-- Private response export schema field remains `"schema": "bbs-role-tool-response-v1"` for compatibility; also include `schemaVersion: 1` and `product: "bridge360"`.
+- Private response export schema field remains `"schema": "bbs-role-tool-response-v1"` for compatibility; also include `schemaVersion: 1` and `product: "smartwork"`.
 - Supported local use: `npm run build` + static serve of `dist/` (not `file://`).
 - Do not delete `outputs/` in this plan.
 - No Vercel wiring in this plan.
@@ -30,7 +30,7 @@
 
 ```
 app/
-  package.json                          # name: "bridge360"
+  package.json                          # name: "smartwork"
   vite.config.ts
   vitest.config.ts
   index.html
@@ -93,12 +93,12 @@ app/
 work/
   e2e/
     smoke.spec.ts                       # Playwright against Vite preview/dist
-docs/superpowers/plans/2026-07-14-bridge360-react-redesign.md
+docs/superpowers/plans/2026-07-14-smartwork-react-redesign.md
 ```
 
 ---
 
-### Task 1: Scaffold Bridge360 Vite + React + TypeScript
+### Task 1: Scaffold SMARTWork Vite + React + TypeScript
 
 **Files:**
 - Create: `app/package.json`, `app/vite.config.ts`, `app/vitest.config.ts`, `app/tsconfig.json`, `app/tsconfig.app.json`, `app/tsconfig.node.json`, `app/index.html`, `app/src/main.tsx`, `app/src/App.tsx`, `app/src/vite-env.d.ts`
@@ -116,11 +116,11 @@ npm install -D vitest jsdom @testing-library/react @testing-library/jest-dom @te
 
 - [ ] **Step 2: Set package name and scripts**
 
-In `app/package.json`, set `"name": "bridge360"` and ensure scripts include:
+In `app/package.json`, set `"name": "smartwork"` and ensure scripts include:
 
 ```json
 {
-  "name": "bridge360",
+  "name": "smartwork",
   "private": true,
   "type": "module",
   "scripts": {
@@ -156,13 +156,13 @@ Create `app/src/test/setup.ts`:
 import "@testing-library/jest-dom/vitest";
 ```
 
-- [ ] **Step 4: Set document title Bridge360 in `app/index.html`**
+- [ ] **Step 4: Set document title SMARTWork in `app/index.html`**
 
 ```html
-<title>Bridge360 | Bridge Builder Strategies</title>
+<title>SMARTWork | Bridge Builder Strategies</title>
 ```
 
-- [ ] **Step 5: Minimal App shell that renders Bridge360**
+- [ ] **Step 5: Minimal App shell that renders SMARTWork**
 
 `app/src/App.tsx`:
 
@@ -170,7 +170,7 @@ import "@testing-library/jest-dom/vitest";
 export default function App() {
   return (
     <main>
-      <h1>Bridge360</h1>
+      <h1>SMARTWork</h1>
       <p>Bridge Builder Strategies</p>
     </main>
   );
@@ -190,7 +190,7 @@ Expected: build succeeds; tests exit 0 (or passWithNoTests).
 ```bash
 git add app
 git commit -m "$(cat <<'EOF'
-Scaffold Bridge360 Vite React TypeScript app.
+Scaffold SMARTWork Vite React TypeScript app.
 
 EOF
 )"
@@ -229,7 +229,7 @@ Load Source Serif 4 + Source Sans 3 from Google Fonts in `index.html` `<head>` (
 
 - [ ] **Step 2: Implement AppShell**
 
-`AppShell` shows BBS color logo (`/assets/brand/bbs-logo-color-lockup.png` — assets added in Task 3; use path now), product name **Bridge360**, eyebrow “Bridge Builder Strategies”, and note: “Current-state documentation — no gap analysis, scoring, or compensation guidance.” Logo + title navigate home via `<Link to="/">`.
+`AppShell` shows BBS color logo (`/assets/brand/bbs-logo-color-lockup.png` — assets added in Task 3; use path now), product name **SMARTWork**, eyebrow “Bridge Builder Strategies”, and note: “Current-state documentation — no gap analysis, scoring, or compensation guidance.” Logo + title navigate home via `<Link to="/">`.
 
 - [ ] **Step 3: Wire HashRouter**
 
@@ -270,14 +270,14 @@ export default function App() {
 cd app && npm run dev
 ```
 
-Open shown URL; confirm header says Bridge360; `#/person/test` hits placeholder or not-found route works for unknown paths after person pages exist (NotFound for `*`).
+Open shown URL; confirm header says SMARTWork; `#/person/test` hits placeholder or not-found route works for unknown paths after person pages exist (NotFound for `*`).
 
 - [ ] **Step 5: Commit**
 
 ```bash
 git add app/src app/index.html
 git commit -m "$(cat <<'EOF'
-Add Bridge360 shell, tokens, and HashRouter route skeleton.
+Add SMARTWork shell, tokens, and HashRouter route skeleton.
 
 EOF
 )"
@@ -412,7 +412,7 @@ Expected: PASS.
 ```bash
 git add app/public/assets app/src/types app/src/data
 git commit -m "$(cat <<'EOF'
-Migrate Bridge360 role, org, capacity, and development data.
+Migrate SMARTWork role, org, capacity, and development data.
 
 EOF
 )"
@@ -458,7 +458,7 @@ Search across person, titles, function, skills, tools, purpose, responsibilities
 ```bash
 git add app/src/lib/search.ts app/src/lib/search.test.ts
 git commit -m "$(cat <<'EOF'
-Add role search and filter helpers for Bridge360.
+Add role search and filter helpers for SMARTWork.
 
 EOF
 )"
@@ -481,7 +481,7 @@ Use `CAPACITY_DATA` for `ahnaf-labib`. Assert grouped percents sum to 100 and ca
 
 ```bash
 git commit -m "$(cat <<'EOF'
-Add capacity allocation helpers for Bridge360.
+Add capacity allocation helpers for SMARTWork.
 
 EOF
 )"
@@ -545,7 +545,7 @@ export interface ResponseField {
 export interface PrivateResponsePayload {
   schema: "bbs-role-tool-response-v1";
   schemaVersion: 1;
-  product: "bridge360";
+  product: "smartwork";
   kind: ReviewKind;
   audience: ReviewAudience;
   personId: string;
@@ -609,7 +609,7 @@ Search “Ahnaf” → click → URL hash includes `person/ahnaf-labib`.
 
 ```bash
 git commit -m "$(cat <<'EOF'
-Add Bridge360 home org map and search.
+Add SMARTWork home org map and search.
 
 EOF
 )"
@@ -631,7 +631,7 @@ EOF
 
 ```bash
 git commit -m "$(cat <<'EOF'
-Add collapsible role directory filters on Bridge360 home.
+Add collapsible role directory filters on SMARTWork home.
 
 EOF
 )"
@@ -665,7 +665,7 @@ Tabs: Overview | Outcomes | Competencies | Reference with content from spec §4.
 
 ```bash
 git commit -m "$(cat <<'EOF'
-Add Bridge360 profile page with summary hero and tabs.
+Add SMARTWork profile page with summary hero and tabs.
 
 EOF
 )"
@@ -717,7 +717,7 @@ Sections: basis, optional 30-day startup (weeks/assignments/support/reflection),
 
 ```bash
 git commit -m "$(cat <<'EOF'
-Add Bridge360 development plan page with print support.
+Add SMARTWork development plan page with print support.
 
 EOF
 )"
@@ -743,7 +743,7 @@ For audience param: outcome Emerging/Meeting/Strong radios + notes; competency L
 
 ```bash
 git commit -m "$(cat <<'EOF'
-Add Bridge360 360 launch and private response export forms.
+Add SMARTWork 360 launch and private response export forms.
 
 EOF
 )"
@@ -767,7 +767,7 @@ On load, validate each with `validateResponsePayload`. Show specific errors; do 
 
 ```bash
 git commit -m "$(cat <<'EOF'
-Add Bridge360 360 combine workflow and alignment report.
+Add SMARTWork 360 combine workflow and alignment report.
 
 EOF
 )"
@@ -782,7 +782,7 @@ EOF
 
 - [ ] **Step 1: Visual pass against spec §7**
 
-- Bridge360 wordmark beside BBS logo
+- SMARTWork wordmark beside BBS logo
 - Home = one composition
 - Profile hero first viewport calm (no card soup)
 - Mobile stack for home; sticky person context
@@ -794,7 +794,7 @@ EOF
 
 ```bash
 git commit -m "$(cat <<'EOF'
-Polish Bridge360 visual design and responsive layout.
+Polish SMARTWork visual design and responsive layout.
 
 EOF
 )"
@@ -835,7 +835,7 @@ Expected: PASS.
 
 ```bash
 git commit -m "$(cat <<'EOF'
-Add Bridge360 Playwright smoke coverage for manager workflows.
+Add SMARTWork Playwright smoke coverage for manager workflows.
 
 EOF
 )"
@@ -851,7 +851,7 @@ EOF
 
 - [ ] **Step 1: README**
 
-Document: product Bridge360; `npm install`, `npm run dev`, `npm run build`, `npm run preview` / `npx serve dist`; HashRouter; no `file://`; print via browser; privacy model for 360 JSON.
+Document: product SMARTWork; `npm install`, `npm run dev`, `npm run build`, `npm run preview` / `npx serve dist`; HashRouter; no `file://`; print via browser; privacy model for 360 JSON.
 
 - [ ] **Step 2: Run full acceptance**
 
@@ -865,7 +865,7 @@ Checklist from spec §9 Acceptance criteria 1–6 — all must pass.
 
 ```bash
 git commit -m "$(cat <<'EOF'
-Document Bridge360 local build workflow and verify acceptance.
+Document SMARTWork local build workflow and verify acceptance.
 
 EOF
 )"
@@ -877,7 +877,7 @@ EOF
 
 | Spec requirement | Task(s) |
 |------------------|---------|
-| React + Vite + TS SPA named Bridge360 | 1–2 |
+| React + Vite + TS SPA named SMARTWork | 1–2 |
 | HashRouter + local static dist | 1, 2, 17 |
 | Full parity org/profiles/capacity/dev/360/print | 3–14 |
 | Summary hero + 4 tabs | 10 |
@@ -889,6 +889,6 @@ EOF
 
 ## Placeholder / consistency notes
 
-- Export schema string stays `bbs-role-tool-response-v1` (legacy-compatible); `product: "bridge360"` is additive.
+- Export schema string stays `bbs-role-tool-response-v1` (legacy-compatible); `product: "smartwork"` is additive.
 - Route param is always `:id` matching `Role.id`.
 - Capacity category labels: `Project` | `Product` | `Internal`.
