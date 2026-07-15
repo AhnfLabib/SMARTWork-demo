@@ -11,7 +11,7 @@ type ProfileHeroProps = {
 };
 
 export default function ProfileHero({ role, capacity }: ProfileHeroProps) {
-  const topOutcomes = role.outcomes.slice(0, 5);
+  const topOutcomes = role.outcomes.slice(0, 3);
 
   function handleExportSummary() {
     exportSummary(role, capacity);
@@ -30,7 +30,7 @@ export default function ProfileHero({ role, capacity }: ProfileHeroProps) {
             src="/assets/brand/bbs-logo-white-lockup.png"
             alt="Bridge Builder Strategies"
           />
-          <p className="profile-kicker">Standardized Role Profile</p>
+          <p className="profile-kicker">Role profile</p>
           <h2>{role.person}</h2>
           <p className="profile-hero-title">{role.standardizedTitle}</p>
         </Link>
@@ -52,7 +52,7 @@ export default function ProfileHero({ role, capacity }: ProfileHeroProps) {
 
         {topOutcomes.length > 0 ? (
           <div className="profile-outcome-preview">
-            <h3>Top role outcomes</h3>
+            <h3>Key outcomes</h3>
             <ul>
               {topOutcomes.map(([outcome]) => (
                 <li key={outcome}>{outcome}</li>
@@ -95,7 +95,7 @@ export default function ProfileHero({ role, capacity }: ProfileHeroProps) {
           Export summary
         </button>
         <Link className="ghost-button close-profile" to="/">
-          Home
+          All roles
         </Link>
       </div>
 

@@ -18,12 +18,11 @@ export default function AppShell({ children }: AppShellProps) {
           <div className="brand-copy">
             <p className="eyebrow">Bridge Builder Strategies</p>
             <h1 className="product-wordmark">Bridge360</h1>
-            <p className="product-tagline">Role clarity · capacity · development · 360</p>
+            <p className="product-tagline">Internal role clarity</p>
           </div>
         </Link>
         <p className="header-note">
-          Current-state documentation — no gap analysis, scoring, or compensation
-          guidance.
+          Current-state role documentation.
         </p>
         <div className="brand-rail" aria-hidden="true">
           <span className="rail-navy" />

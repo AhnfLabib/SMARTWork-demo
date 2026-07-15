@@ -19,14 +19,14 @@ export default function OrgSearch({
   return (
     <section className="org-search" aria-label="Search the organization map">
       <label className="org-search-label" htmlFor="org-search-input">
-        Search people
+        Find a person or role
       </label>
       <div className="org-search-row">
         <input
           id="org-search-input"
           className="org-search-input"
           type="search"
-          placeholder="Search people, titles, skills, tools, responsibilities..."
+          placeholder="Name, role, function, or skill"
           value={query}
           onChange={(event) => onQueryChange(event.target.value)}
         />

@@ -190,3 +190,9 @@ select {
     width: 100%;
   }
 }
+
+/* Product refinement: let content lead and use brand color as a signal, not decoration. */
+html { background: #f6f7f8; }
+.app-header { background: rgba(255, 255, 255, .97); box-shadow: none; gap: 32px; min-height: 82px; padding: 14px clamp(20px, 4vw, 56px) 17px; }
+.brand-lockup { gap: 14px; }.brand-lockup:hover { background: transparent; }.brand-logo { max-height: 44px; width: clamp(136px, 15vw, 192px); }.eyebrow { color: var(--green); font-size: 10px; letter-spacing: .12em; margin-bottom: 2px; }.app-header h1, .product-wordmark { font-family: var(--font-body); font-size: clamp(25px, 3vw, 33px); font-weight: 750; letter-spacing: -.04em; }.product-tagline { font-size: 12px; margin-top: 3px; }.header-note { background: transparent; border: 0; border-left: 1px solid var(--line); border-radius: 0; font-size: 12px; max-width: 280px; padding: 3px 0 3px 18px; }.brand-rail { height: 3px; }.app-shell { max-width: 1440px; padding: clamp(20px, 3vw, 40px); }
+@media (max-width: 768px) { .header-note { border-left: 0; border-top: 1px solid var(--line); max-width: none; padding: 10px 0 0; } }
